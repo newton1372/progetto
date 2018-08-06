@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListaMonete>
+	<Moneta fattore="1.05">Euro</Moneta>
+	<Moneta fattore="0.98">Dollaro</Moneta>
+	<Moneta fattore="1.12">Yen</Moneta>
+	<Moneta fattore="0.89">Franco svizzero</Moneta>
+	<Moneta fattore = "0.11">Sterlina</Moneta>
+	<Moneta fattore="0.22">Peso</Moneta>
+	<Moneta fattore="1.12">Bitcoin</Moneta>
+	<Moneta fattore="0.89">Dracma</Moneta>
+</ListaMonete>
+
