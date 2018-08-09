@@ -1,0 +1,77 @@
+<html>
+	<head>
+		<title>Monete dal mondo</title>
+		<script src="JQuery.js" type="text/javascript"> </script>
+
+
+		<script>
+			function callServer(){
+				$.ajax({
+					type:"get",
+					url: "http://127.0.0.1:1337",
+					dataType: "xml",
+					beforeSend: function(){
+						console.log("making request");
+					},
+					success: function(resp){
+						var listaMonete =resp.getElementsByTagName("Moneta");
+						var xmlTable = document.createElement("table");
+						xmlTable.border="1";
+
+						var xmlTr = document.createElement("tr");
+						var xmlTd = document.createElement("td");
+						xmlTd.textContent = "Nome moneta";
+						xmlTd.style="font-weight:bold";
+						xmlTr.appendChild(xmlTd);
+
+						xmlTd = document.createElement("td");
+						xmlTd.textContent = "Fattore di conversione";
+						xmlTd.style="font-weight:bold";
+						xmlTr.appendChild(xmlTd);
+
+						xmlTable.appendChild(xmlTr);
+
+						for(var i =0;i<listaMonete.length;i++){
+							xmlTr = document.createElement("tr");
+
+							xmlTd = document.createElement("td");							
+							xmlTd.textContent = listaMonete[i].textContent;
+							xmlTr.appendChild(xmlTd);
+							
+							
+							xmlTd = document.createElement("td");							
+							
+							xmlTd.textContent=listaMonete[i].getAttribute("fattore");
+							xmlTr.appendChild(xmlTd);
+							
+							xmlTable.appendChild(xmlTr);
+						}
+
+						document.getElementsByTagName("body")[0].appendChild(xmlTable);
+
+						}				
+				});
+			}
+		</script>
+
+
+
+		<style>
+			.grassetto{font-weight:bold;}
+		</style>
+	</head>
+
+	<body>
+		<h1>Monete dal mondo</h1>
+
+		<br><br>
+		
+		<h2>Premi il pulsante per leggere la lista di monete</h2>
+		<input type="button" value="Mostra monete" onclick="callServer();"/>
+		<br><br>
+	</body>
+
+
+
+
+</html>
