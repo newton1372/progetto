@@ -1,0 +1,21 @@
+<html>
+<head>
+
+</head>
+
+<body>
+	
+	<script src="/socket.io/socket.io.js"></script>
+
+	<script>
+	var socket = io.connect("http://localhost:3000")
+	socket.on('evento', function (data) {
+    		console.log(data);
+		var newDiv = document.createElement("div");
+		newDiv.textContent=data;
+		document.getElementsByTagName("body")[0].appendChild(newDiv);
+    		socket.emit('message', "numero stampato su console");		
+  		});
+	
+	</script>
+</body>
